@@ -1,0 +1,6 @@
+<launch>
+  <node pkg="lab4" type="camera_node.py" name="camera_node" output="screen"/>
+  <node pkg="lab4" type="status_publisher.py" name="status_publisher" output="screen"/>
+  <node pkg="lab4" type="logger_node.py" name="logger_node" output="screen"/>
+  <node pkg="lab4" type="move_between_objects.py" name="move_between_objects" output="screen"/>
+</launch>
