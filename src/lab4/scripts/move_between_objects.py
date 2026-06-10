@@ -9,17 +9,19 @@ state = 'forward'
 def scan_callback(msg):
     global state
     ranges = msg.ranges
+    n = len(ranges)
     front = min(min(ranges[0:10]), min(ranges[-10:]))
+    back = min(ranges[n//2-10:n//2+10])
 
     cmd = Twist()
 
     if state == 'forward':
-        if front < 0.4:
+        if front < 0.5:
             state = 'backward'
         else:
             cmd.linear.x = 0.2
     elif state == 'backward':
-        if front > 0.8:
+        if back < 0.5:
             state = 'forward'
         else:
             cmd.linear.x = -0.2
